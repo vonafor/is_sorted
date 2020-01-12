@@ -1,7 +1,5 @@
 __all__ = ['is_sorted']
 
-_empty = object()
-
 
 def is_sorted(iterable, *, key=None, reverse=False):
     key = (lambda x: x) if key is None else key
@@ -13,9 +11,12 @@ def is_sorted(iterable, *, key=None, reverse=False):
     else:
         cmp = lambda a, b: a < b or not b < a
 
-    previous = _empty
+    is_first = True
+    previous = None
     for current in map(key, iterable):
-        if previous is not _empty:
+        if is_first:
+            is_first = False
+        else:
             if not cmp(previous, current):
                 return False
         previous = current

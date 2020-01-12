@@ -46,3 +46,28 @@ def test_straight_with_key(elems, key, result):
 ])
 def test_reverse_with_key(elems, key, result):
     assert is_sorted(elems, key=key, reverse=True) is result
+
+
+@pytest.mark.parametrize("elems,reverse,result", [
+    ([1, 2, 3], False, True),
+    ([1, 2, 3], True, False),
+    ([3, 2, 1], True, True),
+    ([3, 2, 1], False, False),
+])
+def test_poor_comparison_classes(elems, reverse, result):
+    class A:
+        def __init__(self, i):
+            self.i = i
+
+        def __lt__(self, other):
+            return self.i < other.i
+
+    class B:
+        def __init__(self, i):
+            self.i = i
+
+        def __gt__(self, other):
+            return self.i > other.i
+
+    assert is_sorted([A(e) for e in elems], reverse=reverse) is result
+    assert is_sorted([B(e) for e in elems], reverse=reverse) is result

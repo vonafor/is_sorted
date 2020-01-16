@@ -2,6 +2,11 @@ __all__ = ['is_sorted']
 
 
 def is_sorted(iterable, *, key=None, reverse=False):
+    """
+    Return True if all items from the iterable are sorted in ascending order.
+    Custom sort order can be checked by passing key function.
+    Descending order can be checked by setting reverse flag.
+    """
     key = (lambda x: x) if key is None else key
     # expected that builtin sorted-function/sort-method uses only <
     # https://docs.python.org/3/howto/sorting.html#odd-and-ends

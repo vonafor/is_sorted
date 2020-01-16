@@ -1,6 +1,3 @@
-__all__ = ['is_sorted']
-
-
 def is_sorted(iterable, *, key=None, reverse=False):
     """
     Return True if all items from the iterable are sorted in ascending order.

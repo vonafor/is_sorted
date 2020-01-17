@@ -1,11 +1,15 @@
-import itertools
+from itertools import chain, product
 
 import pytest
 
 from is_sorted import is_sorted
 
 
-@pytest.mark.parametrize("data", map(list, itertools.product(range(5), repeat=5)))
+def generate_data(to):
+    return chain(*(product(range(i), repeat=i) for i in range(1, to)))
+
+
+@pytest.mark.parametrize("data", map(list, generate_data(6)))
 def test_is_sorted(data):
     sorted_ = sorted(data)
     reverse_sorted = sorted(data, reverse=True)

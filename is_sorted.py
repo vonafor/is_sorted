@@ -1,3 +1,6 @@
+__version__ = '0.0.1'
+
+
 def is_sorted(iterable, *, key=None, reverse=False):
     """
     Return True if all items from the iterable are sorted in ascending order.

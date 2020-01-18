@@ -14,7 +14,7 @@ def is_sorted(iterable, *, key=None, reverse=False):
     if reverse:
         cmp = lambda a, b: not a < b
     else:
-        cmp = lambda a, b: a < b or not b < a
+        cmp = lambda a, b: not b < a
 
     is_first = True
     previous = None

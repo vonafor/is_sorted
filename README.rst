@@ -1,7 +1,7 @@
 is_sorted
 =========
 
-*is_sorted* is a tiny tool to check if list (or other iterables) is sorted.
+*is_sorted* is a tiny Python tool to check if list (or any iterable) is sorted.
 
 Installation
 ------------
@@ -23,5 +23,5 @@ Examples
    False
    >>> is_sorted([5, 4, 3, 2, 1], reverse=True)
    True
-   >>> is_sorted([(1, 2), (2, 0), (3, 9), (4, 5)], key=lambda x: x[0])
+   >>> is_sorted([(1, 2), (2, 0), (3, 10), (3, 9), (4, 5)], key=lambda x: x[0])
    True

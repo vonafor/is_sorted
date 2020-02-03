@@ -26,6 +26,20 @@ def is_sorted(iterable, *, key=None, reverse=False, multi=None):
     Return True if all items from the iterable are sorted in ascending order.
     Custom sort order can be checked by passing key function.
     Descending order can be checked by setting reverse flag.
+
+    Multiple keys sorting with custom order can be checking by setting
+    multi argument with following format: [(key1, reverse1), ..., (keyN, reverseN)]
+    Raises ValueError if key/reverse is specified alongside with multi.
+
+    Examples:
+        >>> is_sorted([1, 2, 3, 4, 5, 6])
+        True
+        >>> is_sorted([5, 4, 3, 2, 1], reverse=True)
+        True
+        >>> is_sorted([1, 2, 3], key=lambda x: -x)
+        False
+        >>> is_sorted([(1, 2), (1, 1), (2, 3), (2, 3), (3, 5)], multi=[(lambda x: x[0], False), (lambda x: x[1], True)])
+        True
     """
     if multi and (key or reverse):
         raise ValueError('either key/reverse or multi must be specified')
